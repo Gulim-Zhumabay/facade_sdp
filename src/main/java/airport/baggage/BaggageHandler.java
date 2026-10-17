@@ -48,6 +48,12 @@ public class BaggageHandler {
         repository.save(item);
         return item;
     }
+    public BaggageItem returnToOwner(String itemId) {
+        BaggageItem item = find(itemId);
+        item.returnToOwner();
+        repository.save(item);
+        return item;
+    }
 
     private BaggageItem find(String itemId) {
         return repository.findById(itemId)

@@ -4,13 +4,14 @@ public enum BaggageStatus {
     ACCEPTED,
     CLEARED,
     REJECTED,
-    RELEASED;
+    RELEASED,
+    RETURNED;
 
     public boolean canMoveTo(BaggageStatus next) {
         return switch (this) {
-            case ACCEPTED -> next == CLEARED || next == REJECTED || next == RELEASED;
-            case CLEARED -> next == RELEASED;
-            case REJECTED, RELEASED -> false;
+            case ACCEPTED -> next == CLEARED || next == REJECTED || next == RELEASED || next == RETURNED;
+            case CLEARED -> next == RELEASED || next == RETURNED;
+            case REJECTED, RELEASED, RETURNED -> false;
         };
     }
 }

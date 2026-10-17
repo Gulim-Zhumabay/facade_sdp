@@ -53,6 +53,9 @@ public class BaggageItem {
     public void release() {
         moveTo(BaggageStatus.RELEASED);
     }
+    public void returnToOwner() {
+        moveTo(BaggageStatus.RETURNED);
+    }
 
     private void moveTo(BaggageStatus next) {
         if (!status.canMoveTo(next)) {
